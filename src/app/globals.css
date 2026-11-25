@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+:root {
+  --bg-obsidian: #060D0B;
+  --bg-emerald: #0B1A16;
+  --bg-emerald-hover: #112620;
+  --accent-gold: #D4AF37;
+  --accent-gold-hover: #E5C158;
+  --accent-emerald: #10B981;
+  --accent-amber: #F59E0B;
+  --text-primary: #F4F1EA;
+  --text-secondary: #94A8A0;
+  --border-gold: rgba(212, 175, 55, 0.18);
+  --border-gold-strong: rgba(212, 175, 55, 0.42);
+}
+
+@theme inline {
+  --color-obsidian: var(--bg-obsidian);
+  --color-mosque: var(--bg-emerald);
+  --color-mosque-hover: var(--bg-emerald-hover);
+  --color-gold: var(--accent-gold);
+  --color-gold-hover: var(--accent-gold-hover);
+  --color-emerald-glow: var(--accent-emerald);
+  --color-saffron: var(--accent-amber);
+  --color-alabaster: var(--text-primary);
+  --color-sage: var(--text-secondary);
+  --font-display: var(--font-cinzel);
+  --font-arabic: var(--font-amiri);
+  --font-sans: var(--font-jakarta);
+  --font-mono: var(--font-jetbrains);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: var(--bg-obsidian);
+  color: var(--text-primary);
+  font-family: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Ultra-subtle 8-point Islamic star (Rub el Hizb) geometric lattice */
+.islamic-lattice {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23D4AF37' stroke-width='1'%3E%3Crect x='24' y='24' width='48' height='48'/%3E%3Crect x='24' y='24' width='48' height='48' transform='rotate(45 48 48)'/%3E%3Ccircle cx='48' cy='48' r='8'/%3E%3Cpath d='M48 0 L48 16 M48 80 L48 96 M0 48 L16 48 M80 48 L96 48'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 96px 96px;
+}
+
+.mizan-card {
+  background-color: var(--bg-emerald);
+  border: 1px solid var(--border-gold);
+  border-radius: 1rem;
+  position: relative;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.mizan-card:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.mizan-hero-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+  pointer-events: none;
+}
+
+.tabular-nums-mono {
+  font-family: var(--font-jetbrains), monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom sleek dark scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #060D0B;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.45);
+}

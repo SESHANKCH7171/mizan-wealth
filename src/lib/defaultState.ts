@@ -1,0 +1,270 @@
+import type { MizanState } from "@/types/mizan";
+
+export function createInitialState(): MizanState {
+  const now = "2026-11-25T00:00:00.000Z";
+  return {
+    version: 1,
+    updatedAt: now,
+    settings: {
+      displayName: "Brother",
+      zakaatMissionTarget: 1_00_00_000, // ₹1 Crore
+      nisabThreshold: 6_50_000, // ~87.48g gold / 612.36g silver reference in INR
+      zakaatReserveBalance: 45_000,
+      grandfatherReserveBalance: 15_000,
+    },
+    zakaatEntries: [
+      {
+        id: "zak-1",
+        date: "2026-11-01",
+        amount: 1_50_000,
+        recipient: "Al-Falah Orphan Education Trust",
+        category: "Education & Orphans",
+        kind: "Zakaat",
+        notes: "Annual scholarship sponsorship for 5 students",
+      },
+      {
+        id: "zak-2",
+        date: "2026-10-12",
+        amount: 85_000,
+        recipient: "Local Baitul Maal Medical Aid",
+        category: "Medical Relief",
+        kind: "Zakaat",
+        notes: "Dialysis & medicine assistance",
+      },
+      {
+        id: "zak-3",
+        date: "2026-09-05",
+        amount: 2_25_000,
+        recipient: "Masjid Noor Community Kitchen",
+        category: "Fakir / Miskin",
+        kind: "Zakaat",
+        notes: "Monthly ration kits for 45 families",
+      },
+      {
+        id: "zak-4",
+        date: "2026-07-18",
+        amount: 40_000,
+        recipient: "Neighbor Debt Relief",
+        category: "Debt Relief",
+        kind: "Sadaqah",
+        notes: "Cleared urgent medical loan",
+      },
+    ],
+    grandfatherEntries: [
+      {
+        id: "gf-1",
+        date: "2026-11-05",
+        amount: 25_000,
+        purpose: "Monthly Allowance",
+        paymentMode: "Bank Transfer",
+        notes: "November monthly support",
+      },
+      {
+        id: "gf-2",
+        date: "2026-10-19",
+        amount: 18_500,
+        purpose: "Medical & Care",
+        paymentMode: "UPI",
+        notes: "Health checkup & prescription medicines",
+      },
+      {
+        id: "gf-3",
+        date: "2026-10-03",
+        amount: 25_000,
+        purpose: "Monthly Allowance",
+        paymentMode: "Bank Transfer",
+        notes: "October monthly support",
+      },
+      {
+        id: "gf-4",
+        date: "2026-09-14",
+        amount: 12_000,
+        purpose: "Household",
+        paymentMode: "UPI",
+        notes: "Home AC servicing & winter essentials",
+      },
+    ],
+    earningEntries: [
+      {
+        id: "earn-1",
+        date: "2026-11-01",
+        amount: 2_50_000,
+        source: "Primary Compensation",
+        category: "Salary",
+        halalVerified: true,
+        notes: "November salary credit",
+        autoAllocatedSummary: [
+          "10% (₹25,000) → 1 Cr Zakaat Reserve",
+          "5% (₹12,500) → Grandfather Silat al-Rahim Fund",
+        ],
+      },
+      {
+        id: "earn-2",
+        date: "2026-10-18",
+        amount: 95_000,
+        source: "Advisory Retainer",
+        category: "Business / Freelance",
+        halalVerified: true,
+        notes: "Q4 consulting milestone",
+      },
+      {
+        id: "earn-3",
+        date: "2026-10-01",
+        amount: 2_50_000,
+        source: "Primary Compensation",
+        category: "Salary",
+        halalVerified: true,
+        notes: "October salary credit",
+      },
+    ],
+    assets: [
+      {
+        id: "ast-1",
+        name: "Liquid Cash & Islamic Savings",
+        bucket: "Savings",
+        currentValue: 8_40_000,
+        investedAmount: 8_40_000,
+        halalStatus: "Verified Halal",
+        zakaatEligible: true,
+        lastUpdated: "2026-11-20",
+        notes: "Emergency buffer (6 months)",
+      },
+      {
+        id: "ast-2",
+        name: "Shariah-Compliant Equity Basket",
+        bucket: "Investments",
+        currentValue: 18_50_000,
+        investedAmount: 14_20_000,
+        halalStatus: "Verified Halal",
+        zakaatEligible: true,
+        lastUpdated: "2026-11-20",
+        notes: "Nifty 500 Shariah screened stocks",
+      },
+      {
+        id: "ast-3",
+        name: "24K Physical Gold & Sovereign",
+        bucket: "Gold & Silver",
+        currentValue: 6_20_000,
+        investedAmount: 4_80_000,
+        halalStatus: "Verified Halal",
+        zakaatEligible: true,
+        lastUpdated: "2026-11-15",
+      },
+      {
+        id: "ast-4",
+        name: "Tech Venture Angel Stake",
+        bucket: "Business Equity",
+        currentValue: 5_00_000,
+        investedAmount: 5_00_000,
+        halalStatus: "Under Review",
+        zakaatEligible: false,
+        lastUpdated: "2026-11-01",
+        notes: "Illiquid long-term equity",
+      },
+    ],
+    customBuckets: [
+      {
+        id: "bkt-umrah",
+        name: "Family Umrah Fund",
+        arabicLabel: "عمرة",
+        targetAmount: 4_50_000,
+        currentAmount: 1_85_000,
+        accent: "gold",
+        notes: "Dedicated savings for parents & grandfather Umrah",
+        transactions: [
+          {
+            id: "bt-1",
+            date: "2026-11-01",
+            amount: 25_000,
+            note: "Monthly automated allocation",
+            source: "manual",
+          },
+        ],
+      },
+      {
+        id: "bkt-emergency",
+        name: "Barakah Emergency Reserve",
+        arabicLabel: "احتياط",
+        targetAmount: 10_00_000,
+        currentAmount: 6_40_000,
+        accent: "emerald",
+        notes: "6-month zero-riba household runway",
+        transactions: [],
+      },
+    ],
+    rules: [
+      {
+        id: "rule-1",
+        name: "1 Cr Zakaat Mission Auto-Reserve",
+        enabled: true,
+        percentage: 10,
+        targetType: "zakaat_mission",
+        targetLabel: "1 Cr Zakaat Reserve",
+        description:
+          "Automatically earmark 10% of every new Earning into your Zakaat Reserve.",
+      },
+      {
+        id: "rule-2",
+        name: "Silat al-Rahim (Grandfather) Allocation",
+        enabled: true,
+        percentage: 5,
+        targetType: "grandfather_fund",
+        targetLabel: "Grandfather Support Reserve",
+        description:
+          "Automatically set aside 5% of every new Earning for your grandfather.",
+      },
+      {
+        id: "rule-3",
+        name: "Umrah Bucket Contribution",
+        enabled: false,
+        percentage: 5,
+        targetType: "custom_bucket",
+        targetBucketId: "bkt-umrah",
+        targetLabel: "Family Umrah Fund",
+        description:
+          "Route 5% of each new Earning toward the Family Umrah Fund.",
+      },
+    ],
+  };
+}
+
+export function createEmptyState(): MizanState {
+  return {
+    version: 1,
+    updatedAt: "2026-11-25T00:00:00.000Z",
+    settings: {
+      displayName: "Brother",
+      zakaatMissionTarget: 1_00_00_000,
+      nisabThreshold: 6_50_000,
+      zakaatReserveBalance: 0,
+      grandfatherReserveBalance: 0,
+    },
+    zakaatEntries: [],
+    grandfatherEntries: [],
+    earningEntries: [],
+    assets: [],
+    customBuckets: [],
+    rules: [
+      {
+        id: "rule-1",
+        name: "1 Cr Zakaat Mission Auto-Reserve",
+        enabled: true,
+        percentage: 10,
+        targetType: "zakaat_mission",
+        targetLabel: "1 Cr Zakaat Reserve",
+        description:
+          "Automatically earmark 10% of every new Earning into your Zakaat Reserve.",
+      },
+      {
+        id: "rule-2",
+        name: "Silat al-Rahim (Grandfather) Allocation",
+        enabled: true,
+        percentage: 5,
+        targetType: "grandfather_fund",
+        targetLabel: "Grandfather Support Reserve",
+        description:
+          "Automatically set aside 5% of every new Earning for your grandfather.",
+      },
+    ],
+  };
+}
